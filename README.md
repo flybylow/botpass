@@ -84,8 +84,13 @@ src/
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+4. Run a production build locally (`npm run build`) to catch TypeScript errors and other build issues early
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+For more detailed information, please read:
+- [Contributing Guidelines](.github/CONTRIBUTING.md)
+- [Development Rules](.github/DEVELOPMENT_RULES.md)
 
 ## License
 

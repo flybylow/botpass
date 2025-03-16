@@ -89,4 +89,31 @@ src/
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Deployment
+
+### Environment Variables for Vercel
+
+To deploy this application to Vercel while keeping your Firebase configuration secure, follow these steps:
+
+1. Log in to your [Vercel dashboard](https://vercel.com/dashboard)
+2. Select your project "botpass"
+3. Go to "Settings" tab
+4. Click on "Environment Variables" in the left sidebar
+5. Add each of the following environment variables from your .env file (make sure to add them to all environments: Production, Preview, and Development):
+
+```
+VITE_FIREBASE_API_KEY
+VITE_FIREBASE_AUTH_DOMAIN
+VITE_FIREBASE_PROJECT_ID
+VITE_FIREBASE_STORAGE_BUCKET
+VITE_FIREBASE_MESSAGING_SENDER_ID
+VITE_FIREBASE_APP_ID
+VITE_FIREBASE_MEASUREMENT_ID
+```
+
+6. Click "Save" to store these variables
+7. Re-deploy your application by clicking "Deployments" and then "Redeploy" on your latest deployment
+
+> **Note**: These environment variables are stored securely on Vercel and are not included in your GitHub repository. 

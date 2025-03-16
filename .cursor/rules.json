@@ -44,6 +44,11 @@
       "name": "Error Handling",
       "glob": "src/**/*.tsx",
       "description": "Error handling conventions:\n- Use try/catch blocks for async operations\n- Display error messages in red alert boxes\n- Use loading states during async operations\n- Disable submit buttons during loading"
+    },
+    {
+      "name": "Firebase Configuration",
+      "glob": "src/firebase/**/*.ts",
+      "description": "Firebase setup and usage patterns:\n- Environment variables must be in .env file (never commit real values)\n- Initialize in src/firebase/config.ts\n- Available services: Authentication, Firestore, Storage\n- Use Firebase SDK v9+ modular imports\n- Auth state managed through AuthContext\n- Follow CRUD patterns for Firestore operations\n- Use security rules for Firestore and Storage\n- For detailed info see: .cursor/rules/firebase-config.mdc"
     }
   ]
 } 

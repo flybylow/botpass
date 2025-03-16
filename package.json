@@ -8,18 +8,31 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "start": "vite",
+    "webhook-server": "node webhook-server.js",
+    "webhook-server:cjs": "node webhook-server-cjs.cjs",
+    "webhook-test": "node webhook-test.js",
+    "webhook-test:cjs": "node webhook-test-cjs.cjs",
+    "webhook-test:curl": "bash webhook-test.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@tailwindcss/forms": "^0.5.7",
     "@types/uuid": "^10.0.0",
     "axios": "^1.6.7",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.18.2",
     "firebase": "^10.14.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.0",
     "react-router-dom": "^6.22.0",
+    "socket.io": "^4.8.1",
     "uuid": "^11.1.0"
   },
   "devDependencies": {

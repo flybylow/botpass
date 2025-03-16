@@ -12,7 +12,6 @@ export const WebhookManager: React.FC = () => {
   const { getBot, updateBot } = useBot();
   const { 
     subscriptions, 
-    deliveryHistory, 
     createSubscription, 
     deleteSubscription,
     getDeliveryHistory,
@@ -20,7 +19,6 @@ export const WebhookManager: React.FC = () => {
     triggerWebhook
   } = useWebhook();
   const {
-    messages,
     botMessages,
     loadMessages,
     isLoading: messagesLoading

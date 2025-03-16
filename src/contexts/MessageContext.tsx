@@ -5,7 +5,6 @@ import {
   orderBy, 
   limit as firestoreLimit, 
   onSnapshot,
-  where,
   Timestamp
 } from 'firebase/firestore';
 import { db } from '../firebase/config';

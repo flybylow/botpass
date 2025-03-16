@@ -114,14 +114,6 @@ const Messages = () => {
 
       <div className="space-y-8">
         <div>
-          <h2 className="text-lg font-medium text-gray-900 mb-4">Send Message</h2>
-          <MessageForm 
-            botId={id} 
-            onMessageSent={() => setMessageRefreshTrigger(prev => prev + 1)} 
-          />
-        </div>
-        
-        <div>
           <h2 className="text-lg font-medium text-gray-900 mb-4">Recent Incoming Messages</h2>
           <p className="text-gray-600 mb-4">
             This section displays messages received from bots via webhook calls. Messages are stored and displayed in real-time.
@@ -167,6 +159,14 @@ const Messages = () => {
               </div>
             )}
           </div>
+        </div>
+        
+        <div>
+          <h2 className="text-lg font-medium text-gray-900 mb-4">Send Message</h2>
+          <MessageForm 
+            botId={id} 
+            onMessageSent={() => setMessageRefreshTrigger(prev => prev + 1)} 
+          />
         </div>
         
         <div>

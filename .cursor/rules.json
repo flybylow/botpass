@@ -18,7 +18,7 @@
     {
       "name": "Routing",
       "glob": "src/App.tsx",
-      "description": "Route structure:\n- Public routes:\n  - / (Home)\n  - /signin\n  - /signup\n  - /reset-password\n  - /verify-email/:verificationId?\n- Protected routes (require authentication):\n  - /dashboard\n  - /bot/register\n  - /bot/edit/:id"
+      "description": "Route structure:\n- Public routes:\n  - / (Home)\n  - /signin\n  - /signup\n  - /reset-password\n  - /verify-email/:verificationId?\n- Protected routes (require authentication):\n  - /dashboard\n  - /bot/register\n  - /bot/edit/:id\n  - /bot/:id/webhooks\n  - /bot/:id/messages"
     },
     {
       "name": "Component Conventions",
@@ -49,6 +49,31 @@
       "name": "Firebase Configuration",
       "glob": "src/firebase/**/*.ts",
       "description": "Firebase setup and usage patterns:\n- Environment variables must be in .env file (never commit real values)\n- Initialize in src/firebase/config.ts\n- Available services: Authentication, Firestore, Storage\n- Use Firebase SDK v9+ modular imports\n- Auth state managed through AuthContext\n- Follow CRUD patterns for Firestore operations\n- Use security rules for Firestore and Storage\n- For detailed info see: .cursor/rules/firebase-config.mdc"
+    },
+    {
+      "name": "Webhook System",
+      "glob": "src/services/webhook*",
+      "description": "Webhook implementation guidelines:\n- Incoming webhook endpoint: `/api/webhook/incoming`\n- Always use bot ID (not name) in webhook requests\n- Webhook payload format requires: botId, messageType, content\n- Optional fields: timestamp, data (object)\n- Message types: message, status, error, event\n- Local webhook server runs on port 3030 (fallback: 3031)\n- Environment variable VITE_USE_LOCAL_WEBHOOK controls local vs production"
+    },
+    {
+      "name": "Message Handling",
+      "glob": "src/components/messages/**/*.tsx",
+      "description": "Message interface structure:\n- Recent Incoming Messages section appears at top of UI\n- Color-coded badges indicate message type (green=regular, blue=status, red=error)\n- Messages display timestamp, content, and expandable data section\n- Messages appear in real-time via Firebase real-time database\n- Best practices: organize by type, use structured data, keep content concise"
+    },
+    {
+      "name": "Bot ID System",
+      "glob": "src/contexts/BotContext.tsx",
+      "description": "Bot naming and identification system:\n- Each bot has a unique ID (auto-generated, e.g., `9U8JhxaBe8Fv8OtLq4KN`)\n- Friendly names are for display in UI only\n- Always use bot ID (not name) in API calls and webhook requests\n- Bot IDs are used in URL routes: `/bot/:id/messages`\n- Messages are linked to bots via the botId field"
+    },
+    {
+      "name": "Local Development",
+      "glob": "webhook-server.js",
+      "description": "Local development setup:\n- Run webhook server: `npm run webhook-server` (port 3030)\n- Test with curl: `curl -X POST http://localhost:3030/api/webhook/incoming`\n- Use ngrok for external access: `./ngrok http 3030`\n- Set VITE_USE_LOCAL_WEBHOOK=true in .env.local for local mode\n- Firebase emulators can be used for fully local environment"
+    },
+    {
+      "name": "n8n Integration",
+      "glob": "docs/n8n-*.json",
+      "description": "n8n workflow integration:\n- Use workflow files for testing: `n8n-webhook-test-workflow.json` (scheduled) and `n8n-webhook-manual-test-workflow.json` (manual)\n- Workflows send test webhooks to configured endpoints\n- Update webhook URL in n8n workflows to match your environment\n- Valid test bot IDs: `9U8JhxaBe8Fv8OtLq4KN`, `test-bot-from-n8n`, `test-bot-from-curl`, `test-bot-2`, `test-bot-3`"
     }
   ]
 } 

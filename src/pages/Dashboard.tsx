@@ -10,7 +10,7 @@ interface BotWithMessageCount extends Bot {
 
 const Dashboard = () => {
   const { user } = useAuth();
-  const { getUserBots, getBotMessageCount, bots: allBots } = useBot();
+  const { getUserBots, getBotMessageCount } = useBot();
   const [bots, setBots] = useState<BotWithMessageCount[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

@@ -1,16 +1,12 @@
-import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { 
   collection,
   addDoc,
   updateDoc,
-  deleteDoc,
   doc,
   getDocs,
   query,
   where,
-  Timestamp,
-  DocumentReference,
-  DocumentData,
   getDoc,
   getCountFromServer
 } from 'firebase/firestore';

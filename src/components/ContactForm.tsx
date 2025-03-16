@@ -5,9 +5,10 @@ import { sendMessage } from "../services/firebase"
 
 interface ContactFormProps {
   onSubmit?: (data: { message: string }) => void
+  botId?: string
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ onSubmit, botId = "default" }) => {
   const [message, setMessage] = React.useState("")
   const [isSubmitting, setIsSubmitting] = React.useState(false)
   const [status, setStatus] = React.useState<{
@@ -21,7 +22,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
     setStatus({ type: null, message: null })
 
     try {
-      await sendMessage(message)
+      await sendMessage(message, botId)
       onSubmit?.({ message })
       setMessage("")
       setStatus({

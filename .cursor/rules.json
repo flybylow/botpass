@@ -1,0 +1,49 @@
+{
+  "rules": [
+    {
+      "name": "Project Structure",
+      "glob": "**/*",
+      "description": "BotVerify follows a specific project structure:\n- src/components/: Reusable UI components\n  - common/: General components like Layout, ProtectedRoute\n  - auth/: Authentication related components\n  - bot/: Bot management components\n- src/contexts/: React contexts for global state\n  - AuthContext.tsx: Authentication state\n  - BotContext.tsx: Bot management state\n- src/pages/: Page components\n- src/utils/: Utility functions\n- src/assets/: Static assets"
+    },
+    {
+      "name": "Authentication",
+      "glob": "src/contexts/AuthContext.tsx",
+      "description": "Authentication is handled through AuthContext with these features:\n- Email/password authentication\n- Protected routes via ProtectedRoute component\n- User state management (isAuthenticated, user object)\n- Demo credentials: demo@botverify.dev / demo123\n- Functions: login, signup, logout, resetPassword"
+    },
+    {
+      "name": "Bot Management",
+      "glob": "src/contexts/BotContext.tsx",
+      "description": "Bot management is handled through BotContext with these features:\n- CRUD operations for bots\n- Bot verification status tracking\n- Functions: addBot, updateBot, deleteBot, getBot, getUserBots\n- Bot properties: name, description, platforms, ownerId, verificationStatus"
+    },
+    {
+      "name": "Routing",
+      "glob": "src/App.tsx",
+      "description": "Route structure:\n- Public routes:\n  - / (Home)\n  - /signin\n  - /signup\n  - /reset-password\n  - /verify-email/:verificationId?\n- Protected routes (require authentication):\n  - /dashboard\n  - /bot/register\n  - /bot/edit/:id"
+    },
+    {
+      "name": "Component Conventions",
+      "glob": "src/components/**/*.tsx",
+      "description": "Component conventions:\n- Use TypeScript interfaces for props\n- Use react-hook-form for form handling\n- Use Tailwind CSS for styling\n- Use Link from react-router-dom for navigation\n- Handle loading states and error messages"
+    },
+    {
+      "name": "Styling",
+      "glob": "**/*.tsx",
+      "description": "Styling conventions:\n- Use Tailwind CSS utility classes\n- Primary color classes: primary-600, primary-700\n- Form styling: rounded-md, shadow-sm\n- Container max widths: max-w-7xl, max-w-2xl\n- Responsive design: sm:, md:, lg: prefixes"
+    },
+    {
+      "name": "Path Aliases",
+      "glob": "vite.config.ts",
+      "description": "Path alias configuration:\n- @ alias points to src/\n- Import example: import { useAuth } from '@/contexts/AuthContext'\n- Configured in both vite.config.ts and tsconfig.json"
+    },
+    {
+      "name": "Form Validation",
+      "glob": "src/pages/**/*.tsx",
+      "description": "Form validation conventions:\n- Use react-hook-form for form handling\n- Common validations:\n  - Email: required, email format\n  - Password: required, min length 6\n  - Bot name: required, min length 2\n  - Description: required, min length 10"
+    },
+    {
+      "name": "Error Handling",
+      "glob": "src/**/*.tsx",
+      "description": "Error handling conventions:\n- Use try/catch blocks for async operations\n- Display error messages in red alert boxes\n- Use loading states during async operations\n- Disable submit buttons during loading"
+    }
+  ]
+} 

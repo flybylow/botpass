@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBot } from '@/contexts/BotContext';
+import BotSideMenu from '@/components/common/BotSideMenu';
 
 interface BotFormData {
   name: string;
@@ -69,18 +70,8 @@ const BotRegistration = () => {
     }
   };
 
-  return (
-    <div className="max-w-2xl mx-auto space-y-8">
-      <h2 className="text-2xl font-semibold text-gray-900">
-        {id ? 'Edit Bot' : 'Register New Bot'}
-      </h2>
-
-      {error && (
-        <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-md text-sm">
-          {error}
-        </div>
-      )}
-
+  const renderForm = () => {
+    return (
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -174,6 +165,38 @@ const BotRegistration = () => {
           </button>
         </div>
       </form>
+    );
+  };
+
+  // If we're in create mode, render as before
+  if (!id) {
+    return (
+      <div className="max-w-2xl mx-auto space-y-8">
+        <h2 className="text-2xl font-semibold text-gray-900">Register New Bot</h2>
+        {error && (
+          <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-md text-sm">
+            {error}
+          </div>
+        )}
+        {renderForm()}
+      </div>
+    );
+  }
+
+  // If we're in edit mode, add the side menu
+  return (
+    <div className="flex gap-8">
+      <BotSideMenu botId={id} activeMenu="settings" />
+      
+      <div className="flex-1 space-y-8">
+        <h2 className="text-2xl font-semibold text-gray-900">Edit Bot</h2>
+        {error && (
+          <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-md text-sm">
+            {error}
+          </div>
+        )}
+        {renderForm()}
+      </div>
     </div>
   );
 };

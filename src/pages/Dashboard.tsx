@@ -127,9 +127,14 @@ const Dashboard = () => {
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                           {bot.messageCount !== undefined ? (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                              {bot.messageCount} messages
-                            </span>
+                            <Link
+                              to={`/bot/${bot.id}/messages`}
+                              className="hover:no-underline"
+                            >
+                              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 hover:bg-blue-200">
+                                {bot.messageCount} messages
+                              </span>
+                            </Link>
                           ) : (
                             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
                               Loading...
@@ -150,21 +155,21 @@ const Dashboard = () => {
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-4">
                           <Link
                             to={`/bot/edit/${bot.id}`}
-                            className="text-primary-600 hover:text-primary-900"
+                            className="text-primary-600 hover:text-primary-900 inline-flex items-center gap-1"
                           >
-                            Edit
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                            </svg>
+                            <span>Settings</span>
                           </Link>
                           <Link
                             to={`/bot/${bot.id}/messages`}
-                            className="text-primary-600 hover:text-primary-900"
+                            className="text-primary-600 hover:text-primary-900 inline-flex items-center gap-1"
                           >
-                            Messages
-                          </Link>
-                          <Link
-                            to={`/bot/${bot.id}/webhooks`}
-                            className="text-primary-600 hover:text-primary-900"
-                          >
-                            Webhooks
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                            </svg>
+                            <span>Messages</span>
                           </Link>
                         </td>
                       </tr>
